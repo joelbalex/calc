@@ -5,38 +5,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simple Calculator</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
 
     <div class="calculator">
-        <input type="text" class="calculator-screen" value="" disabled />
+        <input type="text" id="result" class="calculator-screen" value="" disabled />
 
         <div class="calculator-keys">
-            <button type="button" class="operator" value="+">+</button>
-            <button type="button" class="operator" value="-">-</button>
-            <button type="button" class="operator" value="*">&times;</button>
-            <button type="button" class="operator" value="/">&divide;</button>
+            <button type="button" class="operator" value="+" onclick="dispNum('+')">+</button>
+            <button type="button" class="operator" value="-" onclick="dispNum('-')">-</button>
+            <button type="button" class="operator" value="*" onclick="dispNum('*')">&times;</button>
+            <button type="button" class="operator" value="/" onclick="dispNum('/')">&divide;</button>
 
-            <button type="button" value="7">7</button>
-            <button type="button" value="8">8</button>
-            <button type="button" value="9">9</button>
+            <button type="button" value="7" onclick="dispNum(7)">7</button>
+            <button type="button" value="8" onclick="dispNum(8)">8</button>
+            <button type="button" value="9" onclick="dispNum(9)">9</button>
 
-            <button type="button" value="4">4</button>
-            <button type="button" value="5">5</button>
-            <button type="button" value="6">6</button>
+            <button type="button" value="4" onclick="dispNum(4)">4</button>
+            <button type="button" value="5" onclick="dispNum(5)">5</button>
+            <button type="button" value="6" onclick="dispNum(6)">6</button>
 
-            <button type="button" value="1">1</button>
-            <button type="button" value="2">2</button>
-            <button type="button" value="3">3</button>
+            <button type="button" value="1" onclick="dispNum(1)">1</button>
+            <button type="button" value="2" onclick="dispNum(2)">2</button>
+            <button type="button" value="3" onclick="dispNum(3)">3</button>
 
-            <button type="button" value="0">0</button>
-            <button type="button" class="decimal" value=".">.</button>
-            <button type="button" class="all-clear" value="all-clear">AC</button>
+            <button type="button" value="0" onclick="dispNum(0)">0</button>
+            <button type="button" class="decimal" value="." onclick="backSpace()"><i class="fa-solid fa-delete-left"></i></button>
+            <button type="button" class="all-clear" value="all-clear" onclick="clearScreen()">AC</button>
 
-            <button type="button" class="equal-sign" value="=">=</button>
+            <button type="button" class="equal-sign" value="=" onclick="operation()">=</button>
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        function dispNum(num){
+            result.value+=num
+        }
+        function clearScreen(){
+            result.value=" "
+        }
+        function operation(){
+            result.value=eval(result.value)
+        }
+        function backSpace(){
+            result.value=result.value.slice(0,-1)
+        }
+    </script>
 </body>
 </html>
